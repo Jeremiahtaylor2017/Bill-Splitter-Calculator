@@ -24,10 +24,11 @@ else:
     names_dict = names_dict.fromkeys(names_dict, split)
 
     print()
-    # print(names_dict)
+
+    lucky_person = False
 
     lucky_input = input(
-        "Do you want to use the \"Who's luck\" feature? Please enter y/n . ").strip()
+        "Do you want to use the \"Who's luck\" feature? Please enter Yes/No . ").strip()
     if lucky_input == "Yes":
         lucky_person = choice(list(names_dict))
         print()
@@ -35,3 +36,14 @@ else:
     else:
         print()
         print("No one is going to be lucky")
+
+    if lucky_person:
+        new_split = round(bill / (n_people - 1), 2)
+        for name in names_dict:
+            if name == lucky_person:
+                names_dict[name] = 0
+            else:
+                names_dict[name] = new_split
+
+    print()
+    print(names_dict)
