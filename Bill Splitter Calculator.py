@@ -4,13 +4,16 @@ from random import choice
 n_people = int(input("Enter number of people joining you (including you): "))
 print()
 
+# Establishing main dictionary where information is stored
 names_dict = {}
 
+# Logic to decide if the program should continue.
 if n_people <= 0:
     print("No one is joining for the party")
 else:
     print("Enter the names of everyone (including you), each on a new line.")
 
+    # Set the initial values to 0 for the keys(names) in the dictionary
     for _ in range(n_people):
         name = input()
         names_dict[name] = 0
@@ -21,6 +24,8 @@ else:
 
     split = round(bill / n_people, 2)
 
+    # Assigns the split values to each person.
+    # Total used in final output if lucky feature not used.
     names_dict = names_dict.fromkeys(names_dict, split)
 
     print()
@@ -37,6 +42,8 @@ else:
         print()
         print("No one is going to be lucky")
 
+    # If lucky feature is used, makes sure the lucky person pays nothing and the rest split between
+    # however many people there are.
     if lucky_person:
         new_split = round(bill / (n_people - 1), 2)
         for name in names_dict:
